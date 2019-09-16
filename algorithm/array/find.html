@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Find(target, array)
+    {
+        // write code here
+        var rows = array.length-1;
+        var cols = 0;
+        while(rows >= 0 && cols < array[0].length){
+            if(target > array[rows][cols]){
+                cols++;
+                continue;
+            }
+            if(target < array[rows][cols]){
+                rows--;
+                continue;
+            }
+            if(target == array[rows][cols]){
+                return true
+            }
+        }
+        return false
+    }
+
+    console.log(Find(7,[[1,2,8,9],[2,4,9,12],[4,7,10,13],[6,8,11,15]]))
+  </script>
+</body>
+</html>
