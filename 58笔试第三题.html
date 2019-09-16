@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  function wave(w){
+    //请按照要求写出你的答案
+    var res = [];
+    for(i=0;i<w.length;i++){
+      var strArr = w.split('');
+      var wB = w[i].toUpperCase();
+      var newStrArr = strArr.splice(i,1,w[i].toUpperCase());
+      var str = strArr.join('');
+      res.push(str);
+    }
+   return res;
+}
+console.log(wave('hello'))
+</script>
+</html>
