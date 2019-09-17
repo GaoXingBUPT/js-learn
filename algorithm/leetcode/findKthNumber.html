@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+// var findKthNumber = function(n, k) {
+//   let getCount = (prefix, n) => {
+//     let count =  0;
+//     for(let cur = prefix, next = prefix + 1; cur <= n; cur *= 10, next *= 10) 
+//       count += Math.min(next, n+1) - cur;
+//     return count;
+//   }
+//   let p = 1;
+//   let prefix = 1;
+//   while(p < k) {
+//     let count = getCount(prefix, n);
+//     if(p + count > k) {
+//       prefix *= 10;
+//       p++;
+//     } else if(p + count <= k) {
+//       prefix ++;
+//       p += count;
+//     }
+//   }
+//   return prefix;
+// };
+console.log(findKthNumber(13,4))
+
+// 前缀
+function getCount(pre,n) {
+  var next = pre+1;
+  var count = 0;
+  while( pre < n ) {
+    count += Math.min(next,n+1) - pre;
+    pre = pre * 10;
+    next = next *10;
+  }
+  return count;
+}
+//console.log(getCount(1,13))
+
+function findKthNumber(n,k){
+  var index = 1;
+  var cur = 1;
+  var count = 0;
+  while(index < k){
+    count = getCount(cur,n);
+    if(index+count <= k){
+      cur++;
+      index += count;
+    }else{
+      cur *= 10;
+      index ++;
+    }
+  }
+  return cur;
+}
+</script>
+</html>
