@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  //var input = readline();
+// var map = {
+//     a:'bcd',
+//     b:'123',
+//     c:'def',
+//     d:'321',
+//     e:'11',
+//     f:'d',
+//     g:'hf',
+//     h:'2'
+// }
+// function parse(str){
+//     var arr = str.split('');
+//     for(var i=0; i<arr.length; i++){
+//         if(map.hasOwnProperty(arr[i])){
+//             if(arr[i]!=='a'&& arr[i]!=='c'&& arr[i]!=='f' && arr[i]!=='g'){
+//                 arr[i] = map[arr[i]];
+//             }else{
+//                 arr[i] = parse(map[arr[i]]);
+//             }
+//         }
+//     }
+//     return arr.join('');
+// }
+// console.log(parse('a'));
+
+
+// function parse(str){
+//     for(var i=0; i<str.length; i++){
+//         if(map.hasOwnProperty(str[i])){
+//             if(str[i]!=='a'||str[i]!=='c'||str[i]!=='f'||str[i]!=='g'){
+//                 str[i] = map[str[i]];
+//             }else{
+//                 str[i] = parse(map[str[i]]);
+//             }
+//         }
+//     }
+//     return str;
+// }
+
+//var input = readline();
+// function isTruePort(str){
+//     var obj = {};
+//     var count = 0;
+//     var arr = str.split(',');
+//     for(var i = 0; i < arr.length; i++){
+//             var head = arr[i].split('-')[0];
+//             var tail = arr[i].split('-')[1] || head;
+//             //var [head,tail] = arr[i].split('-');
+//             for(var j = parseInt(head); j <= parseInt(tail); j++){
+//                 if(head<1 || head > 65535 || tail<1 || tail>65535){
+//                     return false;
+//                 }
+//                 if(!obj[j]){
+//                     obj[j] = 1;
+//                     count += 1;
+//                 }
+//             }
+//     }
+//     console.log(count);
+//     if(count>1024){
+//         return false;
+//     }
+//     return true;
+// }
+// console.log(isTruePort('48-2048'))
+
+
+var arr = ["3 31 56 4 55 74"];
+// var line;
+// while(line = readline()){
+//     arr.push(line)
+// }
+// function isTrueNumber(arr){
+//     var res = "";
+//     var len;
+//     var row;
+//     for(var i=0;i<arr.length;i++){
+//         row = arr[i].split(" ");
+//         len = row.length-1;
+//         if((len+1)%2){
+//             if(row[0].length===2 && row[len].length===2 && row[len/2].length===1){
+//                 res += "true ";
+//             }else if(row[0].length===1 && row[len].length===1 && row[len/2].length===2){
+//                 res += "true ";
+//             }else{
+//               res += "false ";
+//             }
+//         }else{
+//             var nowLength = row[0].length;
+//             for(var j=1;j<=len;j++){
+//                 if(nowLength == row[j].length) {
+//                     res += "false ";
+//                     break;
+//                 }else{
+//                     nowLength = row[j].length;
+//                 }
+//             }
+//             if(j>len){
+//               res += "true ";
+//             }
+//         }
+//     }
+//     return res
+// }
+// console.log(isTrueNumber(arr))
+
+
+//var input = read_line();
+// input = "12 23 3";
+// var arr = input.split(" ");
+// var a = arr[0]
+// var b = arr[1];
+// var c = arr[2];
+// //var [a,b,k] = input.split(" ");
+// function findCount(a,b,k){
+//     var count = 0;
+//     for(var i = a;i <= b; i++){
+//         if(i%k == 0){
+//             for(var j=2;j<=k-1;j++){
+//                 if(i%j==0){
+//                     break;
+//                 }
+//             }
+//             count++;
+//         }
+//     }
+//     return count;
+// }
+// console.log(findCount(a,b,c))
+
+// function findCount(a,b,k){
+//     var count = 0;
+//     for(var i = a;i <= b; i++){
+//         if(i%k == 0){
+//             for(var j=2;j<=k-1;j++){
+//                 if(i%j==0){
+//                     break;
+//                 }
+//             }
+//             if(j>k-1){
+//                 count++;
+//             }
+//         }
+//     }
+//     return count;
+// }
+// console.log(findCount(6,19,5))
+
+
+
+///////////////大数相乘///////////////////////////
+// console.log( multiply('123', '44'))
+
+// function multiply(num1, num2) {
+//   // 实现代码写在这里
+//     var n1 = num1.split('');
+//     var n2 = num2.split('');
+//     var mul = [];
+//     var jinWei = 0;
+//     for(var i = n2.length-1; i>=0; i--){
+//         var numCur = n2[i];
+//         var buWei = n2.length - i - 1;
+//         var  line = [];
+//         while(buWei){
+//             line.unshift(0);
+//             buWei--;
+//         }
+//         for(var j = n1.length-1;j >=0;j--){
+//           line.unshift((n1[j]*numCur+jinWei)%10);
+//           jinWei = Math.floor((n1[j]*numCur+jinWei)/10);
+//             //mul[i][j] = (n1[j]*numCur+jinWei)%10;
+//             //mul[i][j] = (n1[j]*numCur+jinWei)%10;
+//             //jinWei = Math.floor((n1[j]*numCur+jinWei)/10);
+//         }
+//         mul.push(line.reverse());
+//     }
+
+//     var sum = [];
+//     var res = [];
+//     var curJin = 0;
+//     // for(var k = mul[n2.length-1].length+1;k>=0;k++){
+//     //   sum[k] = curJin;
+//     //     for( var l=0; l < n2.length; l++){
+//     //         sum[k] += mul[l][k];
+//     //     }
+//     //     res[k] = sum[k]%10;
+//     //     curJin = Math.floor(res[k]/10);
+//     // }
+//     for(var k = 0; k < mul[n2.length-1].length ;k++){
+//         sum[k] = curJin;
+//         for( var l=0; l < n2.length; l++){
+//             sum[k] += (mul[l][k] || 0);
+//         }
+//         res[k] = sum[k]%10;
+//         curJin = Math.floor(sum[k]/10);
+//     }
+//     return res.reverse().join("");
+
+
+    //var n1 = parseInt(num1);
+    //var n2 = parseInt(num2);
+    //return num1*num2;
+// }
+
+
+var foo = function(o){
+    o.name = "小三";
+    var o={name:"小四"};
+    console.log(o.name);
+}
+var o = {name:"小二"};
+foo(o);
+console.log(o.name);
+
+</script>
+</html>
