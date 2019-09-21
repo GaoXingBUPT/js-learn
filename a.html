@@ -236,31 +236,100 @@ var arr = ["3 31 56 4 55 74"];
 
 
 //二维数组 环形遍历
-var snail = function(array) {
-  var result = [];
-  while (array.length) {
-    // Steal the first row.
-    result = (result ? result.concat(array.shift()) : array.shift());
-    // Steal the right items.
-    for (var i = 0; i < array.length; i++)
-      result.push(array[i].pop());
-    // Steal the bottom row.
-    result = result.concat((array.pop() || []).reverse());
-    // Steal the left items.
-    for (var i = array.length - 1; i >= 0; i--)
-      result.push(array[i].shift());
-  }
-  return result;
+// var snail = function(array) {
+//   var result = [];
+//   while (array.length) {
+//     // Steal the first row.
+//     result = (result ? result.concat(array.shift()) : array.shift());
+//     // Steal the right items.
+//     for (var i = 0; i < array.length; i++)
+//       result.push(array[i].pop());
+//     // Steal the bottom row.
+//     result = result.concat((array.pop() || []).reverse());
+//     // Steal the left items.
+//     for (var i = array.length - 1; i >= 0; i--)
+//       result.push(array[i].shift());
+//   }
+//   return result;
+// }
+
+// //console.log(arr);
+// var arr = [];
+// arr.push([1,2,3,4]);
+// arr.push([5,6,7,8]);
+// arr.push([9,10,11,12]);
+// arr.push([13,14,15,16]);
+
+// console.log(snail(arr));
+
+
+// function minNumberInRotateArray(rotateArray)
+// {
+//     // write code here
+//     var low = 0;
+//     var high = rotateArray.length;
+//     if(high == 1){
+//         return rotateArray[0];
+//     }
+//     if(high == 2 && rotateArray[0]>rotateArray[1]){
+//         return rotateArray[1];
+//     }
+//     var mid = Math.floor((low+high)/2);
+//     while(low <= high){
+//         if(rotateArray[mid] > rotateArray[mid-1] && rotateArray[mid] > rotateArray[mid+1]){
+//             return rotateArray[mid+1];
+//         }
+//         if(rotateArray[mid] > rotateArray[low]){
+//             low = mid;
+//         }
+//         if(rotateArray[high] > rotateArray[mid]){
+//             high = mid;
+//         }
+//     }
+// }
+// var rotateArray = [3,4,5,1,2];
+// console.log(minNumberInRotateArray(rotateArray));
+
+//汇量科技
+// var x=1;
+// var y = 0;
+// var z = 0;
+// function add (x){return x= x+1}
+// y=add (x)
+// function add (x){return x = x+3}
+// z = add (x)
+// console.log(x,y,z);
+
+// var name = "window name"
+// function fn () {
+//   console.log(this.name);
+// }
+// var obj={
+//   name: "sss",
+//   objf: function(fn){
+//     fn && fn();
+//     return function(){
+//       console.log(this.name)
+//     }
+//   }
+// }
+// console.log(obj.objf(fn)())
+
+//new 
+function create(Con, ...args) {
+  let obj = {}
+  Object.setPrototypeOf(obj, Con.prototype)
+  let result = Con.apply(obj, args)
+  return result instanceof Object ? result : obj
 }
 
-//console.log(arr);
-var arr = [];
-arr.push([1,2,3,4]);
-arr.push([5,6,7,8]);
-arr.push([9,10,11,12]);
-arr.push([13,14,15,16]);
+//  new 操作符的几个作用
 
-console.log(snail(arr));
+// new 操作符会返回一个对象，所以我们需要在内部创建一个对象
+// 这个对象，也就是构造函数中的 this，可以访问到挂载在 this 上的任意属性
+// 这个对象可以访问到构造函数原型上的属性，所以需要将对象与构造函数链接起来
+// 返回原始值需要忽略，返回对象需要正常处理
+
 
 </script>
 </html>
