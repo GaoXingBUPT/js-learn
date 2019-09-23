@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  function MoreThanHalfNum_Solution(numbers)
+{
+    // write code here
+    var len = numbers.length;
+    if(len == 0) return 0;
+    if(len == 1) return numbers[0];
+    var obj = {}
+    for(var i=0; i<len; i++){
+        if(!obj[numbers[i]]){
+            obj[numbers[i]]=1
+        }else{
+            obj[numbers[i]]++
+            if(obj[numbers[i]] > numbers.length/2){
+                return numbers[i]
+            }
+        }
+    }
+    return 0
+}
+
+var numbers = [1,2,3,2,2,2,5,4,2];
+console.log(MoreThanHalfNum_Solution(numbers))
+</script>
+</html>

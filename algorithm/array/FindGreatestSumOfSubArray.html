@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+
+  //1.负的和
+  //2.最大和
+  function FindGreatestSumOfSubArray(array)
+{
+    // write code here
+    if (array.length < 0) return 0;
+    var sum = array[0],
+        tempsum = array[0]; //注意初始值 不能设为0 防止只有负数        
+    for (var i = 1; i < array.length; i++) {
+        tempsum = (tempsum < 0) ? array[i] : tempsum + array[i];
+        sum = (tempsum > sum) ? tempsum : sum;
+    }
+    return sum;
+}
+</script>
+</html>
