@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  <h1>数字在排序数组中出现的次数</h1>
+  <ul>
+    <li>首先这个数组是有序的，所以我们只要能够找到这个给定的数字在这个数组中出现的第一个位置和最
+      后一个位置就可以得到一共出现的次数</li>
+      <li>在这里采用二分查找的方法可以更快速的找到第一个位置和最后一个位置，减少时
+        间复杂度，最坏情况下的时间复杂度为为O(logn)</li>
+  </ul>
+</body>
+<script>
+  function GetNumberOfK(data, k)
+{
+    // write code here
+    var index1 = myIndexOf(data,k);
+    var index2 = myLastIndexOf(data,k);
+    return index2-index1+1;
+}
+function myLastIndexOf(data,k){
+    var low = 0;
+    var high = data.length-1;
+    var mid = Math.round((low+high)/2);
+    while(low<=high){
+        if(data[mid]<=k){
+            low = mid+1;
+        }else{
+            high = mid-1;
+        }
+        mid = Math.round((low+high)/2);
+    }
+    return high;
+}
+function myIndexOf(data,k){
+    var low = 0;
+    var high = data.length-1;
+    var mid = Math.round((low+high)/2);
+    while(low<=high){
+        if(data[mid]>=k){
+            high = mid-1;
+        }else{
+            low = mid+1;
+        }
+        mid = Math.round((low+high)/2);
+    }
+    return low;
+}
+</script>
+</html>

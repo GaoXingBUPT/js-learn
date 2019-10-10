@@ -25,33 +25,60 @@
   </ul>
 </body>
 <script>
-  function FindNumsAppearOnce(array)
-{
-    // write code here
-    // return list, 比如[a,b]，其中ab是出现一次的两个数字
-    var l = array.length;
-    var temp = array[0];
-    for(var i = 1; i < l; i++){
-        temp = temp ^ array[i]
-    }
-    var index = 0;
-    while(temp & 1 === 0){
-        temp = temp >> 1;
-        index++;
-    }
-    var oneTemp = 0;
-    var zeroTemp = 0;
-    for(var j = 0; j<l; j++){
-        if((array[j]>>index) & 1){
-            oneTemp = oneTemp ^ array[j]
-        }else{
-            zeroTemp = zeroTemp ^ array[j]
-        }
-    }
-    return [oneTemp,zeroTemp];
+//   function FindNumsAppearOnce(array)
+// {
+//     // write code here
+//     // return list, 比如[a,b]，其中ab是出现一次的两个数字
+//     var l = array.length;
+//     var temp = array[0];
+//     for(var i = 1; i < l; i++){
+//         temp = temp ^ array[i]
+//     }
+//     var index = 0;
+//     while(temp & 1 === 0){
+//         temp = temp >> 1;
+//         index++;
+//     }
+//     var oneTemp = 0;
+//     var zeroTemp = 0;
+//     for(var j = 0; j<l; j++){
+//         if((array[j]>>index) & 1){
+//             oneTemp = oneTemp ^ array[j]
+//         }else{
+//             zeroTemp = zeroTemp ^ array[j]
+//         }
+//     }
+//     return [oneTemp,zeroTemp];
+// }
+
+function FindNumsAppearOnce(nums) {
+   if (nums.length < 2 || !nums) {
+     return
+   }
+   if (nums.length === 2) {
+     return nums
+   }
+   let xor = 0
+   for (let i = 0; i < nums.length; i++) {
+     xor ^= nums[i]
+   }
+   let lastOne = -xor & xor
+   let numOne = 0
+   let numTwo = 0
+   let arr1 = []
+   let arr2 = []
+   for (let i = 0; i < nums.length; i++) {
+     if ((nums[i] & lastOne) === 0) {
+       numOne ^= nums[i]
+     } else {
+       numTwo ^= nums[i]
+     }
+   }
+   return [numOne, numTwo]
 }
 
-var array = [0,1,1,2,2,3,3,4,3,3,9,4];
+
+var array = [0,4,2,2];
 console.log(FindNumsAppearOnce(array));
 </script>
 </html>
