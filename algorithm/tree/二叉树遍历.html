@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  // 递归遍历
+
+  //1.先序
+  function DLR(root){
+    if(root!=null){
+        console.log(root.val);
+        DLR(root.left);
+        DLR(root.right);
+    }
+  }
+
+  //2.中序
+  function LDR(root){
+    if(root!=null){
+        LDR(root.left);
+        console.log(root.val);
+        LDR(root.right);
+    }
+  }
+
+  //3.后序
+  function LRD(root){
+    if(root!=null){
+      LRD(root.left)
+      LRD(root.right)
+      console.log(root.value)
+    }
+  }
+
+  // 非递归遍历
+  //1.先序
+  function DLRNoRecursive(root){
+    var arr=[],res=[];
+    if(root!=null){
+        arr.push(root);
+    }
+    while(arr.length!=0){
+        var temp=arr.pop();
+        res.push(temp.val);
+        //这里先放右边再放左边是因为取出来的顺序相反
+        if(temp.right!=null){
+            arr.push(temp.right);
+        }
+        if(temp.left!=null){
+            arr.push(temp.left);
+        }
+    }
+    return res;
+  }
+
+  //2.中序
+  function LDRNoRecursive(root){
+    var arr=[],res=[];
+    while(true){
+        while(root!=null){
+            arr.push(root);
+            root=root.left;
+        }
+        //终止条件：最后树遍历完了自然就结束
+        if(arr.length==0){
+            break;
+        }
+        var temp=arr.pop();
+        res.push(temp.val);
+        root=temp.right;
+    }
+    return res;
+  }
+
+  var root = {
+    val: 1,
+    left: {
+      val: 2,
+      left: {
+        val: 4,
+      },
+      right:{
+        val:5
+      }
+    },
+    right: {
+      val: 3,
+      left: {
+        val: 6
+      },
+      right: {
+        val: 7
+      }
+    }
+  }
+  console.log(LDRNoRecursive(root))//4,2,5,1,6,3,7
+
+  //3.后序
+  function LRDNoRecursive(root){
+    var arr=[],res=[];
+    arr.push(root);
+    while(arr.length!=0){
+        var p=arr.pop();
+        res.push(p.val);
+        if(p.left!=null){
+            arr.push(p.left);
+        }
+        if(p.right!=null){
+            arr.push(p.right);
+        }
+    }
+    return res.reverse();
+  }
+</script>
+</html>
