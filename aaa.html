@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  var input = "34839946-beijing 34839946-shanghai 42342124-hongkong 42342124-guilin 42342124-guilin 12312344-shanghai 12312344-shanghai 22341234-nanjing";
+  var arr = input.split(" ");
+function firstThree(arr){
+    var obj = {};
+    for(var i=0;i<arr.length;i++){
+        [value,key] = arr[i].split("-");
+        if(!obj[key]){
+            obj[key] = [value]
+        }else if(obj[key].indexOf(value) == -1){
+            obj[key].push(value)
+        }
+    }
+    var keys = Object.keys(obj).sort(function(a,b){
+        if(obj[a].length>obj[b].length){
+            return -1
+        }else if(obj[a].length<obj[b].length){
+            return 1
+        }else if(obj[a].length==obj[b].length){
+             return a>b
+        }
+    });
+    //var output = [];
+    for(var j = 0;j<3;j++){
+        //output.push([keys[i],obj[keys[i]]])
+        console.log(keys[j],obj[keys[j]].length)
+    }
+    //return output;
+}
+firstThree(arr)
+
+
+function FindKthToTail(head, k)
+{
+    //if (!head || !k) return null;
+    var count = 1;
+    var cur = head;
+    var sed = head;
+   while(cur.next){
+        count++;
+        cur = cur.next
+        if(count>k){
+            sed = sed.next
+        }
+    }
+    return (k <= count) && sed;
+      
+}
+
+</script>
+</html>
