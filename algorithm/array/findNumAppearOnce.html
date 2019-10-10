@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  <h1>异或位操作</h1>
+  <ul>
+    <li>两个相同数字异或=0，一个数和0异或还是它本身</li>
+    <li>异或结果中位1 表示 两个不同元素当前索引位数字不同</li>
+    <li>a=0001 b=0000 异或结果c=0001</li>
+    <li>根据异或结果中1，把数组中数分成两种不同类别，分别异或得出结果</li>
+  </ul>
+</body>
+<script>
+  function FindNumsAppearOnce(array)
+{
+    // write code here
+    // return list, 比如[a,b]，其中ab是出现一次的两个数字
+    var l = array.length;
+    var temp = array[0];
+    for(var i = 1; i < l; i++){
+        temp = temp ^ array[i]
+    }
+    var index = 0;
+    while(temp & 1 === 0){
+        temp = temp >> 1;
+        index++;
+    }
+    var oneTemp = 0;
+    var zeroTemp = 0;
+    for(var j = 0; j<l; j++){
+        if((array[j]>>index) & 1){
+            oneTemp = oneTemp ^ array[j]
+        }else{
+            zeroTemp = zeroTemp ^ array[j]
+        }
+    }
+    return [oneTemp,zeroTemp];
+}
+
+var array = [0,1,1,2,2,3,3,4,3,3,9,4];
+console.log(FindNumsAppearOnce(array));
+</script>
+</html>
