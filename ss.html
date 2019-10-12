@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  function isNumber(str){
+    var regPos = /^\d+(\.\d+)?$/;
+    if(regPos.test(str)){
+        return true;
+    }
+    return false;
+}
+
+function numberToChinese(str){
+    if(!isNumber(str)){
+        return "错误输入"
+    }
+    var chineseItem = ["零","一","二","三","四","五","六","七","八","九"];
+    var numItem = ["0","1","2","3","4","5","6","7","8","9"];
+    //var unitItem =["万","千","百","十"];
+    var unitItem =["十","百","千","万"];
+    var l = str.length;
+    var resItem = [];
+    for(var i = l-1; i>=0; i--){
+      var cur = str.charAt(l-i-1);
+        if(cur!=0){
+            var index = numItem.indexOf(cur);
+        	  resItem.push(chineseItem[index]);
+            resItem.push(unitItem[i-1]);
+        }else{
+          var pre = resItem[resItem.length-1];
+          if(i!=0 && pre!="零"){
+            resItem.push("零");
+          }
+        }
+    }
+    return resItem.join("");
+}
+var input = "90010"
+console.log(numberToChinese(input));
+</script>
+</html>
