@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  var [n,p,k] = [5,7,3];
+function num(n,p,k){
+    var count = 0;
+    for(var i = 1;i<=n;i++){
+        for(var j=1;j<=n;j++){
+            var iN = parseInt(i);
+            var jN = parseInt(j);
+            if((iN+jN)%p == k){
+                count++;
+            }
+        }
+    }
+    return count;
+}
+console.log(num(n,p,k));
+
+
+function isSuShu(aa){
+  for(var sushu = 2; sushu < aa; sushu++){
+        if(aa%sushu == 0){
+            return true;
+        }
+    }
+    return false;
+}
+var aa = 7;
+console.log(isSuShu(aa));
+
+
+
+// var [n,q,base] = read_line().split(" ");
+// var a = read_line().split(" ");
+// var quest = [];
+// for(var qi = 0;qi<q;q++){
+//     quest.push(read_line().split(" "));
+// }
+function value(a,base,quest){
+    for(var questI = 0;questI<q;questI++){
+        var l = quest[questI][0];
+        var r = quest[questI][1];
+        var sum = 0;
+        for(var i=l;i<=r;i++){
+          var mul = Math.pow(base,r-i);
+            //var mul = base^(r-i);
+            sum += mul * a[i-1]
+        }
+        console.log(sum % (2^64))
+    }
+}
+var [n,q,base] = [3,2,5];
+var a = [1,2,3];
+var quest = [[1,3],[1,2]];
+
+value(a,base,quest);
+
+
+function pOfSuc(n){
+    var array = [0,0,1];
+    var res = [];
+    for(var i=0;i<array.length;i++){
+      res.push(toPercent(array[i]))
+    }
+    console.log(res.join(" "));
+}
+function toPercent(point){
+    var str = Number(point*100).toFixed(5);
+    str += "%";
+    return str;
+}
+var n=3;
+pOfSuc(n);
+</script>
+</html>

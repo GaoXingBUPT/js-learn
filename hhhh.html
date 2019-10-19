@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='author' content='gaoxing'>
+  <title>🍋</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  function com_baiyi_triggerLight(lights, t) {
+	// 请在此添加代码
+	for(var i=0; i<t; i++){
+		var l = lights.length;
+		for(var j=0; j<l; j++){
+			var cur = lights[j];
+			if(cur == 1){
+				if(j==0){
+					lights[j+1] = ~lights[j+1]+2;
+				}else if(j==l-1){
+					lights[j-1] = ~lights[j-1]+2;
+				}else{
+          lights[j-1] = ~lights[j-1]+2;
+				  lights[j+1] = ~lights[j+1]+2;
+        }
+				j++;
+			}
+		}
+	}
+	return lights;
+}
+var lights = [1,0,0,1,1,0,1,0,1,1];
+var t=1;
+console.log(com_baiyi_triggerLight(lights, t))
+</script>
+</html>
